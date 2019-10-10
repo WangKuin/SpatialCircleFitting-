@@ -73,7 +73,7 @@ error_sphere = sqrt(V_sphere'*V_sphere/(number_points-1));
 
 % 空间圆求解
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   值得注意的是，此处拟合所得的球面半径并一定是最短半径，即拟合平面不一定过球心，
+%   值得注意的是，此处拟合所得的空间圆半径并一定是最短半径，即拟合平面不一定过球心，
 % 但是实际运用中，我们经常需要用到它的最短半径及其对应的圆心进行求解，所以需要将
 % 拟合的球心投影到拟合平面上作为拟合圆的圆心
 % https://www.cnblogs.com/nobodyzhou/p/6145030.html
@@ -163,7 +163,7 @@ fprintf('#########################################################\n');
 figure_handle = figure(1);
 set(figure_handle,'name','空间圆拟合','Numbertitle','off'); % 设置窗口名称
 plot3(points(:,1),points(:,2),points(:,3),'ro');
-title('空间圆拟合');
+% title('空间圆拟合');
 axis equal,xlabel('X/m'),ylabel('Y/m'),zlabel('H/m'),grid;
 
 % 展绘平面
@@ -188,8 +188,9 @@ x = x + center_sphere(1);
 y = y + center_sphere(2);
 z = z + center_sphere(3);
 % 使用mesh绘制
-mesh(x,y,z),colormap([0,0,1]),alpha(0.5);
-% 展绘拟合空间圆
+mesh(x,y,z),colormap([0,0,1]),alpha(0.3);
+
+% 展绘空间圆
 % 参考 https://blog.csdn.net/xiaoxiaoliluo917/article/details/83788475
 % 圆心
 plot3(center_circle(1),center_circle(2),center_circle(3),'k+');
